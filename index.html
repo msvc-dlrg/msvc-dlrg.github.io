@@ -157,47 +157,75 @@
           <h2 class="title is-3">Robot Platform</h2>
           <div class="content has-text-justified">
             <p>
-              The robot system used in the competition consists of a UR10e robot, a Robotiq Hand-E 
-              gripper, a Realsense D435i RGB-D camera, and a pair of 3D-printed fingertips. 
+              The robot system used in the competition consists of a UR10e collebrative robot, a Robotiq Hand-E 
+              gripper, a pair of 3D-printed fingertips, a Realsense D435i RGB-D camera, a camera bracket, and a 
+              fill light.
             </p>
           </div>
-          <table align="center"width="100%" border="1">
+          <table align="center"width="80%" border="1">
             <tr>
               <th width="20%">Equipment</th>
               <th width="30%">Image</th>
               <th width="50%">Description</th>
             </tr>
             <tr>
-              <td>UR10e Robot</td>
-              <td><img src="images/ur10e.png" alt="UR10e" width="60%"></td>
+              <td style="vertical-align: middle;">UR10e Cobot</td>
+              <td style="vertical-align: middle;">
+                <img src="images/ur10e.png" alt="UR10e" width="60%">
+              </td>
+              <td style="vertical-align: middle;">
+                The UR10e cobot is mounted with the table and controlled through the real-time 
+                data exchange (RTDE) interface.
+              </td>
             </tr>
             <tr>
-              <td>Hand-E gripper</td>
-              <td><img src="images/hand-e.png" alt="Hand-E" width="40%"></td>
+              <td style="vertical-align: middle;"> Robotiq Hand-E gripper</td>
+              <td style="vertical-align: middle;">
+                <img src="images/hand-e.png" alt="Hand-E" width="40%">
+              </td>
+              <td style="vertical-align: middle;">
+                The Hand-E gripper is mounted on the tool flange of the UR10e cobot and controlled
+                via the Modbus RTU protocol from the computer.
+              </td>
             </tr>
             <tr>
-              <td>Intel Realsense D435i</td>
-              <td><img src="images/d435i.png" alt="Realsense D435i" width="80%"></td>
+              <td style="vertical-align: middle;">3D-printed fingertips</td>
+              <td style="vertical-align: middle;">
+                <img src="images/fingertips.png" alt="3D-printed fingertips" width="80%">
+              </td>
+              <td style="vertical-align: middle;">
+                The 3D-printed fingertips are re-designed based on the original fingertips of the
+                Robotiq Hand-E gripper to adapt to the competition tasks by adding grooves and 
+                non-slippery pads.
             </tr>
             <tr>
-              <td>3D-printed fingertips</td>
-              <td><img src="images/fingertips.png" alt="3D-printed fingertips" width="80%"></td>
+              <td style="vertical-align: middle;">Intel Realsense D435i</td>
+              <td style="vertical-align: middle;">
+                <img src="images/d435i.png" alt="Realsense D435i" width="80%">
+              </td>
+              <td style="vertical-align: middle;">
+                The Realsense D435i RGB-D camera is mounted on the UR10e cobot through a bracket
+                and connected to the computer through a USB cable.
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;">Camera bracket</td>
+              <td style="vertical-align: middle;">
+                <img src="images/bracket.png" alt="Camera bracket" width="80%">
+              </td>
+              <td style="vertical-align: middle;">
+                The camera bracket is designed to mount the Realsense D435i RGB-D camera on the UR10e
+                cobot. It is frabricated by CNC with Al6061.
+            </tr>
+            <tr>
+              <td style="vertical-align: middle;">Fill light</td>
+              <td style="vertical-align: middle;">
+                <img src="images/fill-light.png" alt="Fill light" width="80%">
+              </td>
+              <td style="vertical-align: middle;">
+                The fill light is used to provide additional illumination for the RGB-D camera to 
+                improve the image quality. It is mounted above the workspace.
             </tr>
           </table>
-
-          <h3 class="title is-4">Re-rendering the input video</h3>
-          <div class="content has-text-justified">
-            <p>
-              Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-              viewpoint such as a stabilized camera by playing back the training deformations.
-            </p>
-          </div>
-          <div class="content has-text-centered">
-            <video id="replay-video" controls muted preload playsinline width="80%">
-              <source src="videos/replay.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
         </div>
       </div>
     </div>
