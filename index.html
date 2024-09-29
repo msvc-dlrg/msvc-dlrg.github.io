@@ -311,24 +311,6 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
           <div class="column is-full-width">
-            <h2 class="title is-3">Software</h2>
-            <div class="content has-text-justified">
-              <p>
-                The robot system used in the competition consists of a UR10e
-                collebrative robot, a Robotiq Hand-E gripper, a pair of
-                3D-printed fingertips, a Realsense D435i RGB-D camera, a camera
-                bracket, and a ZHIYUN FIVERAY M20 fill light.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-full-width">
             <h2 class="title is-3">Solution</h2>
             <h3 class="title is-4">Task 1-1: Task Board Pose Estimation</h3>
             <div class="content has-text-justified">
@@ -435,8 +417,10 @@
             <h3 class="title is-4">Task 5: Wrap Cable, Replace Probe</h3>
             <div class="content has-text-justified">
               <p>
-                To solve the challenging task, we use human demonstrated
-                motions.
+                To wrap the cable, we collect the gripper poses from human 
+                demonstrated motions, and transform the poses to the task board 
+                frame, making it invariant to the absolute position and 
+                orientation of the board. 
               </p>
             </div>
             <div class="content">
@@ -448,7 +432,8 @@
             <div class="content has-text-justified">
               <p>
                 Pressing the stop trial button (red button) is similar as
-                pressing the blue button.
+                pressing the blue button. Finally, the robot gripper Presses the
+                red button to finish the trial. 
               </p>
             </div>
             <div class="content">
@@ -480,6 +465,7 @@
           </div>
         </div>
       </div>
+    </section>
 
     <section class="section">
       <div class="container is-max-desktop">
@@ -509,11 +495,19 @@
             <h2 class="title is-3">Skill Transferability</h2>
             <div class="content has-text-justified">
               <p>
-                The robot system used in the competition consists of a UR10e
-                collebrative robot, a Robotiq Hand-E gripper, a pair of
-                3D-printed fingertips, a Realsense D435i RGB-D camera, a camera
-                bracket, and a ZHIYUN FIVERAY M20 fill light.
+                We transfer the skill to battery extraction of smoke alarm. The 
+                battery's pose is detected using YOLOv8 with the image captured 
+                by the camera. The gripper go through the demonstrated trajectories
+                to lift up and grasp the battery and place beside the smoke alarm.
+                To pick up the new battery, the robot goes above it and the pose is
+                also detected by YOLOv8. The gripper pick up the battery and place into
+                the containers.
               </p>
+            </div>
+            <div class="content">
+              <video id="teaser" autoplay muted loop playsinline controls width="80%">
+                <source src="videos/battery_extraction.mp4" type="video/mp4">
+              </video>
             </div>
           </div>
         </div>
