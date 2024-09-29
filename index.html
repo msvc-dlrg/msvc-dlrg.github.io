@@ -114,9 +114,14 @@
           <h2 class="title is-3">Overview</h2>
           <div class="content has-text-justified">
             <p>
-              We present the method in euROBIN MSVC @ IROS 2024 competition. 
-              To solve the challenging tasks in this event, we designed compact 
-              robotic system hardware and software solutions with robustness and efficency.
+              We present the method in euROBIN MSVC @ IROS 2024 competition. To build up the robotics system, 
+              we use UR10e Cobot along with commercially available parts, and designed fingers which can robustify the
+              manipulation of the probe and cables. To complete the tasks, we collect images of the task board and fine-tuned 
+              Yolov8 to detect the key elements on the board (red/blue buttons, red test port) and estimate 6D pose of the board
+              in robot base frame. For each task, we design a sequence of gripper motions relative to the task board frame to make
+              the task execution invariant to the global pose of the board. Using the estimated 6D pose of the board, we then convert 
+              all the motions to robot base frame and send command to UR10e.
+              
             </p>
           </div>
         </div>
@@ -267,60 +272,60 @@
       <div class="columns is-centered has-text-centered">
         <div class="column is-full-width">
           <h2 class="title is-3">Solution</h2>
-          <h3 class="title is-4">Task 0: Press Start Trial Button</h3>
+          <h3 class="title is-4">Task 0: Task Board Pose Estimation</h3>
           <div class="content has-text-justified">
             <p>
               The task board is placed at a random orientation on two velcro strips to hold it in 
-              place for a trial. Therefore, for all tasks (including this task), the task board 
-              needs to be localized.
+              place for a trial. Therefore, for all subsequent tasks, the task board 
+              needs to be localized. We use fine-tuned Yolov8 to detect the red button, blue button
+              and the red test port. As the positional relationship between these task board elements
+              is known and fixed, we can estimate the global 6D pose (relative to the robot base) of 
+              the board. 
             </p>
           </div>
-          <h3 class="title is-4">Task 1: Fing Board & Press Button</h3>
+          <h3 class="title is-4">Task 1: Press Blue Button</h3>
           <div class="content has-text-justified">
             <p>
-              The task board is placed at a random orientation on two velcro strips to hold it in 
-              place for a trial. Therefore, for all tasks (including this task), the task board 
-              needs to be localized.
+              To press the button, we first command the gripper to go right over it and then lower the gripper position. Then the gripper goes upward, preparing for the next task.
             </p>
           </div>
           <h3 class="title is-4">Task 2: Move Slider to Setpoints on Screen</h3>
           <div class="content has-text-justified">
             <p>
-              The task board is placed at a random orientation on two velcro strips to hold it in 
-              place for a trial. Therefore, for all tasks (including this task), the task board 
-              needs to be localized.
+              After the gripper approaches to and securely grips the slider, we detect the screen using another fine-tuned Yolov8. The pixels of the triangles displayed on the screen
+              are extracted based on their color to calculate the pixel distance error, which is then projected to the actual distance to move along the slider track.
             </p>
           </div>
           <h3 class="title is-4">Task 3: Plug in Probe into Test Port</h3>
           <div class="content has-text-justified">
             <p>
-              The task board is placed at a random orientation on two velcro strips to hold it in 
-              place for a trial. Therefore, for all tasks (including this task), the task board 
-              needs to be localized.
+              We first move the gripper above the left probe, lower it down to grip it. Although we do not estimate 
+              the precise orientation of the probe, we find it robust enough to set a fixed rotatioio of the gripper,
+              since the probe orientation will be aligned with the gripper after the gripper closes. To increase the 
+              determinism of the cable wrapping task, we rotate the probe to a known angle after plug it into the test
+              port.
             </p>
           </div>
           <h3 class="title is-4">Task 4: Open Door, Probe Circuit</h3>
           <div class="content has-text-justified">
             <p>
-              The task board is placed at a random orientation on two velcro strips to hold it in 
-              place for a trial. Therefore, for all tasks (including this task), the task board 
-              needs to be localized.
+              To speed up the task execution, the gripper first pulls out the probe, insert the probe tip into the 
+              gap of the door edges to open it. Then the probe is inserted to the testing slot and is put back to the probe
+              slot. The task is challenging as the probe may change its pose due to the contact with the task board, but 
+              the grooves of the fingertips we design helps the gripper to securely grasp the probe, dramatically increase the accuracy and 
+              robustness of the manipulation process.
             </p>
           </div>
           <h3 class="title is-4">Task 5: Wrap Cable, Replace Probe</h3>
           <div class="content has-text-justified">
             <p>
-              The task board is placed at a random orientation on two velcro strips to hold it in 
-              place for a trial. Therefore, for all tasks (including this task), the task board 
-              needs to be localized.
+              To solve the challenging task, we use human demonstrated motions.
             </p>
           </div>
           <h3 class="title is-4">Task 6: Press Stop Trial Button</h3>
           <div class="content has-text-justified">
             <p>
-              The task board is placed at a random orientation on two velcro strips to hold it in 
-              place for a trial. Therefore, for all tasks (including this task), the task board 
-              needs to be localized.
+              Pressing the stop trial button (red button) is similar as pressing the blue button.
             </p>
           </div>
         </div>
