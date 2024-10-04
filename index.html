@@ -120,16 +120,18 @@
             <p>
               We present a solution for the euROBIN MSVC @ IROS 2024 competition.
               To build up the robotics system, we use UR10e Cobot along with
-              commercially available parts, and designed fingers which can
-              robustify the manipulation of the probe and cables. To complete
-              the tasks, we collect images of the task board and fine-tuned
-              YOLOv8 to detect the key elements on the board (red/blue
-              buttons, red test port) and estimate 6D pose of the board in
-              robot base frame. For each task, we design a sequence of gripper
-              motions relative to the task board frame to make the task
-              execution invariant to the global pose of the board. Using the
-              estimated 6D pose of the board, we then convert all the motions
-              to robot base frame and send command to UR10e.
+              Intel Realsense D435i camera and Robotiq Hand-E gripper, and
+              designed fingertips with grooves which can robustify the manipulation
+              of the probe and cables. To complete the tasks, we collect images
+              of the task board and fine-tuned YOLOv8 to detect the key elements
+              on the board (red/blue buttons, red test port) and estimate 6D pose
+              of the board in robot base frame. For each task, we design a
+              sequence of gripper motions relative to the task board frame to
+              make the task execution invariant to the global pose of the board.
+              Using the estimated 6D pose of the board, we then convert all the
+              motions to robot base frame and send command to UR10e, and finish all
+              tasks in a continuous trial. The solution is robust and can be
+              transferred to other tasks, such as battery extraction of smoke alarm.
             </p>
           </div>
         </div>
