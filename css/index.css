@@ -31,6 +31,10 @@ body {
 .publication-title {
 }
 
+.publication-title-award {
+    color: #e8002e;
+}
+
 .publication-banner {
   max-height: parent;
 
