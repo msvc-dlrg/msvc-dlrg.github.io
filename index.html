@@ -374,13 +374,11 @@
           <h3 class="title is-4">SubTask 1: Find Board & Press Button</h3>
           <div class="content has-text-justified">
             <p>
-              The task board is placed at a random orientation on two velcro
-              strips to hold it in place for a trial. Therefore, for all
-              subsequent tasks, the task board needs to be localized. We use
-              fine-tuned YOLOv8 to detect the red button, blue button and the
-              red test port. As the positional relationship between these task
-              board elements is known and fixed, we can estimate the global 6D
-              pose (relative to the robot base) of the board.
+              The task board is placed at a random position for each trial. Accurately locating the task board is
+              crucial for successful task execution. A fine-tuned <a
+                href="https://github.com/ultralytics/ultralytics">YOLOv8</a> model was used to detect the red button,
+              the blue button and the red test port. As the positional relationship between these task board elements
+              was known and fixed,the global 6D pose of the board was estimated relative to the robot frame.
             </p>
           </div>
           <div class="columns is-centered">
@@ -393,9 +391,8 @@
           </div>
           <div class="content has-text-justified">
             <p>
-              To press the button, we first command the gripper to go right
-              over it and then lower the gripper position. Then the gripper
-              goes upward, preparing for the next task.
+              To press the blue button, the gripper first moved above it and downward. Then
+              the gripper moved upward, preparing for the next task.
             </p>
           </div>
           <div class="content">
@@ -406,16 +403,17 @@
           </h3>
           <div class="content has-text-justified">
             <p>
-              After the gripper approaches to and securely grips the slider,
-              we detect the screen using another fine-tuned YOLOv8. The pixels
-              of the triangles displayed on the screen are extracted based on
-              their color to calculate the pixel distance error, which is then
-              projected to the actual distance to move along the slider track.
+              After the gripper approached to and securely gripped the slider, the screen was detected using another
+              fine-tuned YOLOv8 model. The red pointer refered to the current position, the yellow one refered to the
+              first target position, and the green one refered to the second target position. The pixels of the pointers
+              displayed on the screen were extracted based on their colors to calculate the pixel distance error, which
+              was then projected to the actual distance relative to the robot frame, guiding the gripper to move the
+              slider to the target.
             </p>
           </div>
           <div class="columns is-centered">
             <div class="column is-half">
-              <img src="./images/slider_screen.png" alt="Screen Detection by YOLOv8" width="700px" />
+              <img src="./images/slider_screen.png" alt="Screen Detection" width="700px" />
             </div>
             <div class="column is-half">
               <video id="teaser" autoplay muted loop width="700px">
@@ -426,13 +424,9 @@
           <h3 class="title is-4">SubTask 3: Plug in Probe into Test Port</h3>
           <div class="content has-text-justified">
             <p>
-              We first move the gripper above the left probe, lower it down to
-              grip it. Although we do not estimate the precise orientation of
-              the probe, we find it robust enough to set a fixed rotation of
-              the gripper, since the probe orientation will be aligned with
-              the gripper after the gripper closes. To increase the
-              determinism of the cable wrapping task, we rotate the probe to a
-              known angle after plug it into the test port.
+              The gripper first moved above the probe and downward to grip it. Then the probe was plugged into the red
+              test port. To increase the determinacy of wrapping the cable in subtask 5, the probe was rotated to a
+              certain angle.
             </p>
           </div>
           <div class="content">
@@ -441,14 +435,11 @@
           <h3 class="title is-4">SubTask 4: Open Door & Probe Circuit</h3>
           <div class="content has-text-justified">
             <p>
-              To speed up the task execution, the gripper first pulls out the
-              probe, inserts the probe tip into the gap of the door edges to
-              open it. Then the probe is inserted into the testing slot and is
-              put back to the probe slot. The task is challenging as the probe
-              may change its pose due to the contact with the task board, but
-              the grooves of the fingertips we design helps the gripper to
-              securely grasp the probe, dramatically increase the accuracy and
-              robustness of the manipulation process.
+              To speed up the task execution, the gripper pulled out the probe and pried up the door with the probe tip,
+              instead of gripping the door. Then the probe was inserted into the testing slot and replaced. The
+              challenge of this subtask is that the pose fo the probe might be changed due to the contact with the task
+              board, but the grooves on the fingertips helped the gripper to securely grasp the probe, increasing the
+              accuracy and robustness of the whole process.
             </p>
           </div>
           <div class="content">
@@ -473,9 +464,8 @@
           <h3 class="title is-4">SubTask 6: Press Stop Trial Button</h3>
           <div class="content has-text-justified">
             <p>
-              Pressing the stop trial button (red button) is similar as
-              pressing the blue button. Finally, the robot gripper Presses the
-              red button to finish the trial.
+              Pressing the stop trial button (red button) is similar as previous pressing the blue button. After the
+              gripper pressed the button, the task board stopped time recording and the trial was finished.
             </p>
           </div>
           <div class="content">
