@@ -264,9 +264,8 @@
                 <img src="./images/hardware/ur10e.png" alt="UR10e" width="60%" />
               </td>
               <td style="vertical-align: middle">
-                The UR10e cobot is mounted on the open-sourced <a
-                  href="https://doi.org/10.1109/AIM43001.2020.9159011">DeepClaw</a> station and controlled through the
-                real-time data exchange (RTDE) interface by the laptop.
+                The UR10e cobot is mounted on the DeepClaw station and controlled through the real-time data exchange
+                (RTDE) interface by the laptop.
               </td>
             </tr>
             <tr>
@@ -370,7 +369,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3">Robust and Fast Solution for SubTasks</h2>
+          <h2 class="title is-3">Solution for SubTasks</h2>
           <h3 class="title is-4">SubTask 1: Find Board & Press Button</h3>
           <div class="content has-text-justified">
             <p>
@@ -479,11 +478,11 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3">Continuous Trials</h2>
+          <h2 class="title is-3">Robust Consecutive Trials</h2>
           <div class="content has-text-justified">
             <p>
-              Here are 5 continuous trials with random initial poses of the
-              task board, showing the robustness of our solution.
+              Following the competition protocol, we performed five consecutive trials at 1 m/s, randomly repositioning
+              the task board to test robustness.
             </p>
           </div>
           <div class="content">
@@ -499,11 +498,12 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3">Fastest Trial</h2>
+          <h2 class="title is-3">High-speed Trial</h2>
           <div class="content has-text-justified">
             <p>
-              Here is the fastest trial we have achieved according to the record
-              by the web board. The total trial time is 28.17s.
+              We then increased speed to 2.5 m/s for a successful high-speed trial completed in 28.2 sec, nearly
+              tripling the efficiency over the averaged best time of 83.5 sec by previous teams and bringing performance
+              closer to a human baseline of 16.3 sec.
             </p>
           </div>
           <div class="content">
@@ -520,21 +520,39 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3">Skill Transferability</h2>
+          <h2 class="title is-3">On-site Demonstration</h2>
           <div class="content has-text-justified">
             <p>
-              We transfer the skill to battery extraction of smoke alarm. The
-              battery's pose is detected using YOLOv8 with the image captured
-              by the camera. The gripper go through the demonstrated trajectories
-              to lift up and grasp the battery and place beside the smoke alarm.
-              To pick up the new battery, the robot goes above it and the pose is
-              also detected by YOLOv8. The gripper pick up the battery and place into
-              the containers.
+              During the on-site competition at IROS 2024 in Abu Dhabi, our system completed the task board in 37.2 sec,
+              winning the Fastest Automated Task Board Solution Award.
             </p>
           </div>
           <div class="content">
             <video id="teaser" autoplay muted loop controls width="700px">
-              <source src="./videos/battery_extraction.mp4" type="video/mp4">
+              <source src="./videos/on_site_trial.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Skill Transferability</h2>
+          <div class="content has-text-justified">
+            <p>
+              The implemented task board skills, such as grasping, dragging, inserting, and pressing, readily transfer
+              to broader applications, such as replacing a smoke detector's battery, which is part of the competition
+              requirement. We decomposed this new scenario into five subtasks directly mapped from previous skills with
+              adjusted TCP trajectories and gripper angles.
+            </p>
+          </div>
+          <div class="content">
+            <video id="teaser" autoplay muted loop controls width="700px">
+              <source src="./videos/battery_replacement.mp4" type="video/mp4">
             </video>
           </div>
         </div>
