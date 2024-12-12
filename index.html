@@ -7,7 +7,8 @@
   <meta name="keywords" content="Design & Learning Research Group, euROBIN, MSVC, IROS 2024" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>
-    Design & Learning Research Group Solution - euROBIN MSVC @ IROS 2024
+    Transferrable Robot Skills Approaching Human-Level Versatility in Automated Task Board Manipulation - Design &
+    Learning Research Group
   </title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
@@ -25,6 +26,7 @@
   <script src="js/bulma-carousel.min.js"></script>
   <script src="js/bulma-slider.min.js"></script>
   <script src="js/index.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WCPLFB8FXC"></script>
   <script>
@@ -43,10 +45,10 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h2 class="title is-3 publication-title">
-              euROBIN MSVC @ IROS 2024
+              Solution for euROBIN MSVC @ IROS 2024
             </h2>
             <h1 class="title is-2 publication-title">
-              Design & Learning Research Group Solution
+              Transferrable Robot Skills Approaching Human-Level Versatility in Automated Task Board Manipulation
             </h1>
             <h2 class="title is-4 publication-title-award">
               Fastest Automated Task Board Solution Award
@@ -80,14 +82,14 @@
             <div class="column has-text-centered">
               <div class="publication-links">
                 <!-- ArXiv Link. -->
-                <span class="link-block">
+                <!-- <span class="link-block">
                   <a href="" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="ai ai-arxiv"></i>
                     </span>
                     <span>ArXiv</span>
                   </a>
-                </span>
+                </span> -->
                 <!-- Video Link. -->
                 <span class="link-block">
                   <a href="https://youtu.be/6FlQ3zCi53w" class="external-link button is-normal is-rounded is-dark">
@@ -118,13 +120,14 @@
                   </a>
                 </span>
                 <!-- zh-CN Link. -->
-                <span class="link-block">
+                <!-- <span class="link-block">
                   <a href="https://msvc-dlrg.github.io/zh-cn" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fas fa-globe"></i>
                     </span>
                     <span>中文</span>
                   </a>
+                </span> -->
               </div>
             </div>
           </div>
@@ -183,21 +186,33 @@
           <h2 class="title is-3">Overview</h2>
           <div class="content has-text-justified">
             <p>
-              We present a solution for the <a href="https://sites.google.com/view/eurobin-msvc">euROBIN MSVC</a>@<a
-                href="https://iros2024-abudhabi.org/">IROS 2024</a>.
-              To build up the robotics system, we use UR10e Cobot along with
-              Intel Realsense D435i camera and Robotiq Hand-E gripper, and
-              designed fingertips with grooves which can robustify the manipulation
-              of the probe and cables. To complete the tasks, we collect images
-              of the task board and fine-tuned YOLOv8 to detect the key elements
-              on the board (red/blue buttons, red test port) and estimate 6D pose
-              of the board in robot base frame. For each task, we design a
-              sequence of gripper motions relative to the task board frame to
-              make the task execution invariant to the global pose of the board.
-              Using the estimated 6D pose of the board, we then convert all the
-              motions to robot base frame and send command to UR10e, and finish all
-              tasks in a continuous trial. The solution is robust and can be
-              transferred to other tasks, such as battery extraction of smoke alarm.
+              Versatility in engineering means adaptability and multi-functionality. For robotic automation, it
+              signifies the ability to handle diverse tasks, easily switch between different operations, and thrive in
+              changing environments. The current gap lies in developing agreed-upon frameworks and metrics that are both
+              quantitative and context-appropriate, capturing not just mechanical capabilities but also cognitive
+              adaptability, integration complexity, and economic value.
+            </p>
+            <p>
+              In this paper, we present the Design and Learning Research Group's (DLRG) solution for the <a
+                href="https://sites.google.com/view/eurobin-msvc">euROBIN Manipulation Skill Versatility Challenge
+                (MSVC)</a> at <a href="https://iros2024-abudhabi.org">IROS 2024</a> in Abu Dhabi, UAE. The MSVC, held
+              annually since 2021, is part of the euROBIN project that seeks to advance transferrable robot skills for
+              the circular economy by autonomously performing tasks such as object localization, insertion, door
+              operation, circuit probing, and cable management. We approached the standardized task board provided by
+              event organizers that mimics industrial testing procedures by structurally decomposing the task into
+              subtask skills. We created a custom dashboard with drag-and-drop code blocks to streamline development and
+              adaptation, enabling rapid code refinement and task restructuring, complementing the default remote web
+              platform that records the performance. Our system completed the task board in 28.2 sec in the lab (37.2
+              sec on-site), nearly tripling the efficiency over the averaged best time of 83.5 sec by previous teams and
+              bringing performance closer to a human baseline of 16.3 sec. By implementing subtasks as reusable code
+              blocks, we facilitated the transfer of these skills to a distinct scenario, successfully removing a
+              battery from a smoke detector with minimal reconfiguration.
+            </p>
+            <p>
+              We also provide suggestions for future research and industrial practice on robotic versatility in
+              manipulation automation through globalized competitions, interdisciplinary efforts, standardization
+              initiatives, and iterative testing in the real world to ensure that it is measured in a meaningful,
+              actionable way.
             </p>
           </div>
         </div>
@@ -222,13 +237,15 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3">Robot Platform</h2>
+          <h2 class="title is-3">Robot System Design</h2>
           <div class="content has-text-justified">
             <p>
-              The robot system used in the competition consists of a UR10e
-              collebrative robot, a Robotiq Hand-E gripper, a pair of
-              3D-printed fingertips, a Realsense D435i RGB-D camera, a camera
-              bracket, and a ZHIYUN FIVERAY M20 fill light.
+              The robot system developed by DLRG for the competition includes a robot arm (UR10e, Universal Robots), a
+              camera (D435, Intel RealSense), a gripper (Hand-E, Robotiq), and a pair of 3D-printed fingertips with
+              minor customization for cable handling, all mounted on the open-sourced <a
+                href="https://doi.org/10.1109/AIM43001.2020.9159011">DeepClaw</a> station previously developed by the
+              team for a reliable and reconfigurable implementation. The camera was mounted on a bracket between the
+              gripper and the flange of the robot arm.
             </p>
           </div>
           <table align="center" width="100%" border="1">
@@ -247,9 +264,9 @@
                 <img src="./images/hardware/ur10e.png" alt="UR10e" width="60%" />
               </td>
               <td style="vertical-align: middle">
-                The UR10e cobot is mounted with the table and controlled
-                through the real-time data exchange (RTDE) interface by the
-                laptop.
+                The UR10e cobot is mounted on the open-sourced <a
+                  href="https://doi.org/10.1109/AIM43001.2020.9159011">DeepClaw</a> station and controlled through the
+                real-time data exchange (RTDE) interface by the laptop.
               </td>
             </tr>
             <tr>
@@ -262,8 +279,8 @@
                 <img src="./images/hardware/hand-e.png" alt="Hand-E" width="40%" />
               </td>
               <td style="vertical-align: middle">
-                The Hand-E gripper is mounted on the tool flange of the UR10e
-                cobot and controlled via the Modbus RTU RS485 protocol.
+                The Hand-E gripper is mounted on the tool flange of the UR10e cobot and controlled via the Modbus RTU
+                RS485 protocol.
               </td>
             </tr>
             <tr>
@@ -276,10 +293,9 @@
                 <img src="./images/hardware/fingertip.png" alt="3D-printed fingertips" width="70%" />
               </td>
               <td style="vertical-align: middle">
-                The fingertips are re-designed based on the original
-                fingertips of the Robotiq Hand-E gripper to adapt to the
-                competition tasks by adding grooves. They are 3D-printed with
-                nylon (HP PA12).
+                The fingertips are re-designed based on the original fingertips of the Robotiq Hand-E gripper to adapt
+                to the competition tasks by adding grooves. They are fabricated using nylon (PA12, HP) through multi-jet
+                fusion (MJF)
               </td>
             </tr>
 
@@ -659,7 +675,7 @@
   <script>
     bulmaCarousel.attach('#results-carousel-hero', {
       slidesToScroll: 1,
-      slidesToShow: 2,
+      slidesToShow: 3,
       autoplay: true,
       loop: true,
       infinite: true,
@@ -667,6 +683,11 @@
       autoplaySpeed: 5000,
     });
 
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
   </script>
 </body>
 
