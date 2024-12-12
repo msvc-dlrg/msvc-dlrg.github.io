@@ -348,6 +348,19 @@
               </td>
             </tr>
           </table>
+          <div class="content has-text-justified">
+            <br />
+            <p>
+              We also designed a web-based user interface. On the left side of the interface was a <i>blueprint</i>
+              panel outlining the robot arm's joints and links, the camera, and the gripper with fingertips. The middle
+              includes a <i>3D scene</i> of the robotic arm showing its current state in Cartesian space, a
+              <i>camera</i> view of the live video stream taken from the wrist overlayed with key feature recognition
+              status, and a stack of <i>data curve</i> windows showing the robot's angles and velocities in the joint
+              space. The right is a <i>command</i> panel with code blocks for each subtask skill and a drag-and-drop
+              interface to restructure and refine the overall task flow rapidly. We also added an extra record button to
+              start and stop recording robot data for convenient execution and redeployment.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -357,8 +370,8 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3">Solution</h2>
-          <h3 class="title is-4">Task 1-1: Task Board Pose Estimation</h3>
+          <h2 class="title is-3">Robust and Fast Solution for SubTasks</h2>
+          <h3 class="title is-4">SubTask 1: Find Board & Press Button</h3>
           <div class="content has-text-justified">
             <p>
               The task board is placed at a random orientation on two velcro
@@ -378,7 +391,6 @@
               <img src="./images/pose_ref.png" alt="Task Board Pose Relative to Robot Base" width="100%" />
             </div>
           </div>
-          <h3 class="title is-4">Task 1-2: Press Blue Button</h3>
           <div class="content has-text-justified">
             <p>
               To press the button, we first command the gripper to go right
@@ -390,7 +402,7 @@
             <img src="./images/blue_button.png" alt="Press Blue Button" width="100%" />
           </div>
           <h3 class="title is-4">
-            Task 2: Move Slider to Setpoints on Screen
+            SubTask 2: Move Slider to Setpoints on Screen
           </h3>
           <div class="content has-text-justified">
             <p>
@@ -403,15 +415,15 @@
           </div>
           <div class="columns is-centered">
             <div class="column is-half">
-              <img src="./images/slider_screen.png" alt="Screen Detection by YOLOv8" width="100%" />
+              <img src="./images/slider_screen.png" alt="Screen Detection by YOLOv8" width="700px" />
             </div>
             <div class="column is-half">
-              <video id="teaser" autoplay muted loop width="100%">
+              <video id="teaser" autoplay muted loop width="700px">
                 <source src="./videos/move_slider.mp4" type="video/mp4">
               </video>
             </div>
           </div>
-          <h3 class="title is-4">Task 3: Plug in Probe into Test Port</h3>
+          <h3 class="title is-4">SubTask 3: Plug in Probe into Test Port</h3>
           <div class="content has-text-justified">
             <p>
               We first move the gripper above the left probe, lower it down to
@@ -426,7 +438,7 @@
           <div class="content">
             <img src="./images/plug_in_probe.png" alt="Plug in Probe into Test Port" width="100%" />
           </div>
-          <h3 class="title is-4">Task 4: Open Door, Probe Circuit</h3>
+          <h3 class="title is-4">SubTask 4: Open Door & Probe Circuit</h3>
           <div class="content has-text-justified">
             <p>
               To speed up the task execution, the gripper first pulls out the
@@ -440,11 +452,11 @@
             </p>
           </div>
           <div class="content">
-            <video id="teaser" autoplay muted loop width="100%">
+            <video id="teaser" autoplay muted loop width="700px">
               <source src="./videos/probe_circuit.mp4" type="video/mp4">
             </video>
           </div>
-          <h3 class="title is-4">Task 5: Wrap Cable, Replace Probe</h3>
+          <h3 class="title is-4">SubTask 5: Wrap Cable & Replace Probe</h3>
           <div class="content has-text-justified">
             <p>
               To wrap the cable, we collect the gripper poses from human
@@ -454,11 +466,11 @@
             </p>
           </div>
           <div class="content">
-            <video id="teaser" autoplay muted loop width="100%">
+            <video id="teaser" autoplay muted loop width="700px">
               <source src="./videos/wrap_cable.mp4" type="video/mp4">
             </video>
           </div>
-          <h3 class="title is-4">Task 6: Press Stop Trial Button</h3>
+          <h3 class="title is-4">SubTask 6: Press Stop Trial Button</h3>
           <div class="content has-text-justified">
             <p>
               Pressing the stop trial button (red button) is similar as
@@ -485,7 +497,7 @@
             </p>
           </div>
           <div class="content">
-            <video id="teaser" autoplay muted loop controls width="100%">
+            <video id="teaser" autoplay muted loop controls width="700px">
               <source src="./videos/continuous_trials.mp4" type="video/mp4">
             </video>
           </div>
@@ -505,7 +517,7 @@
             </p>
           </div>
           <div class="content">
-            <video id="teaser" autoplay muted loop controls width="100%">
+            <video id="teaser" autoplay muted loop controls width="700px">
               <source src="./videos/fastest_trial.mp4" type="video/mp4">
             </video>
           </div>
@@ -531,7 +543,7 @@
             </p>
           </div>
           <div class="content">
-            <video id="teaser" autoplay muted loop controls width="100%">
+            <video id="teaser" autoplay muted loop controls width="700px">
               <source src="./videos/battery_extraction.mp4" type="video/mp4">
             </video>
           </div>
@@ -579,19 +591,19 @@
           </div>
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-128x128">
-              <a href="https://bionicdl.ancorasir.com">
-                <img class="is-rounded" src="./images/team/chaoyang.jpg" alt="Chaoyang Song">
-              </a>
-            </figure>
-            <a href="https://bionicdl.ancorasir.com">Chaoyang Song</a><sup>1, </sup>*
-          </div>
-          <div class="author-block has-text-centered has-addons-centered">
-            <figure class="image is-128x128">
               <a href="https://maindl.ancorasir.com">
                 <img class="is-rounded" src="./images/team/fang.jpg" alt="Fang Wan">
               </a>
             </figure>
             <a href="https://maindl.ancorasir.com">Fang Wan</a><sup>1, </sup>*
+          </div>
+          <div class="author-block has-text-centered has-addons-centered">
+            <figure class="image is-128x128">
+              <a href="https://bionicdl.ancorasir.com">
+                <img class="is-rounded" src="./images/team/chaoyang.jpg" alt="Chaoyang Song">
+              </a>
+            </figure>
+            <a href="https://bionicdl.ancorasir.com">Chaoyang Song</a><sup>1, </sup>*
           </div>
         </div>
 
@@ -630,19 +642,19 @@
           </div>
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-96x96">
-              <a href="https://bionicdl.ancorasir.com">
-                <img class="is-rounded" src="./images/team/chaoyang.jpg" alt="Chaoyang Song">
-              </a>
-            </figure>
-            <a href="https://bionicdl.ancorasir.com">Chaoyang Song</a><sup>1,</sup>*
-          </div>
-          <div class="author-block has-text-centered has-addons-centered">
-            <figure class="image is-96x96">
               <a href="https://maindl.ancorasir.com">
                 <img class="is-rounded" src="./images/team/fang.jpg" alt="Fang Wan">
               </a>
             </figure>
             <a href="https://maindl.ancorasir.com">Fang Wan</a><sup>1,</sup>*
+          </div>
+          <div class="author-block has-text-centered has-addons-centered">
+            <figure class="image is-96x96">
+              <a href="https://bionicdl.ancorasir.com">
+                <img class="is-rounded" src="./images/team/chaoyang.jpg" alt="Chaoyang Song">
+              </a>
+            </figure>
+            <a href="https://bionicdl.ancorasir.com">Chaoyang Song</a><sup>1,</sup>*
           </div>
         </div>
         <div class="publication-authors">
