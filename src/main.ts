@@ -3,7 +3,7 @@ import { WebViewer } from "@rerun-io/web-viewer";
 
 const rrd =
   new URLSearchParams(location.search).get("url") ||
-  "https://app.rerun.io/version/0.20.3/examples/structure_from_motion.rrd";
+  "../data/data.rrd";
 
 const viewer = new WebViewer();
 
