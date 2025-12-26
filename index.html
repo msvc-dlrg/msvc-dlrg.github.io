@@ -44,14 +44,17 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h2 class="title is-3 publication-title">
+            <!-- <h2 class="title is-3 publication-title">
               Solution for euROBIN MSVC @ IROS 2024
-            </h2>
-            <h1 class="title is-2 publication-title">
-              Transferrable Robot Skills Approaching Human-Level Versatility in Automated Task Board Manipulation
-            </h1>
+            </h2> -->
             <h2 class="title is-4 publication-title-award">
               Fastest Automated Task Board Solution Award
+            </h2>
+            <h1 class="title is-2 publication-title">
+              Lessons Learned from the euROBIN Manipulation Skill Versatility Challenge at IROS 2024
+            </h1>
+            <h2 class="title is-4 publication-title">
+              IEEE Robotics and Automation Practice
             </h2>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
@@ -80,14 +83,15 @@
             <div class="column has-text-centered">
               <div class="publication-links">
                 <!-- ArXiv Link. -->
-                <!-- <span class="link-block">
-                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                <span class="link-block">
+                  <a href="https://doi.org/10.1109/RAP.2025.3648290"
+                    class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
-                      <i class="ai ai-arxiv"></i>
+                      <i class="fas fa-file-pdf"></i>
                     </span>
-                    <span>ArXiv</span>
+                    <span>Paper</span>
                   </a>
-                </span> -->
+                </span>
                 <!-- Video Link. -->
                 <span class="link-block">
                   <a href="https://youtu.be/6FlQ3zCi53w" class="external-link button is-normal is-rounded is-dark">
@@ -117,15 +121,14 @@
                     <span>Data</span>
                   </a>
                 </span>
-                <!-- zh-CN Link. -->
-                <!-- <span class="link-block">
-                  <a href="https://msvc-dlrg.github.io/zh-cn" class="external-link button is-normal is-rounded is-dark">
+                <span class="link-block">
+                  <a href="#BibTeX" class="button is-normal is-rounded is-dark">
                     <span class="icon">
-                      <i class="fas fa-globe"></i>
+                      <i class="fas fa-code"></i>
                     </span>
-                    <span>中文</span>
+                    <span>BibTeX</span>
                   </a>
-                </span> -->
+                </span>
               </div>
             </div>
           </div>
@@ -184,33 +187,7 @@
           <h2 class="title is-3">Overview</h2>
           <div class="content has-text-justified">
             <p>
-              Versatility in engineering means adaptability and multi-functionality. For robotic automation, it
-              signifies the ability to handle diverse tasks, easily switch between different operations, and thrive in
-              changing environments. The current gap lies in developing agreed-upon frameworks and metrics that are both
-              quantitative and context-appropriate, capturing not just mechanical capabilities but also cognitive
-              adaptability, integration complexity, and economic value.
-            </p>
-            <p>
-              In this paper, we present the Design and Learning Research Group's (DLRG) solution for the <a
-                href="https://sites.google.com/view/eurobin-msvc">euROBIN Manipulation Skill Versatility Challenge
-                (MSVC)</a> at <a href="https://iros2024-abudhabi.org">IROS 2024</a> in Abu Dhabi, UAE. The MSVC, held
-              annually since 2021, is part of the euROBIN project that seeks to advance transferrable robot skills for
-              the circular economy by autonomously performing tasks such as object localization, insertion, door
-              operation, circuit probing, and cable management. We approached the standardized task board provided by
-              event organizers that mimics industrial testing procedures by structurally decomposing the task into
-              subtask skills. We created a custom dashboard with drag-and-drop code blocks to streamline development and
-              adaptation, enabling rapid code refinement and task restructuring, complementing the default remote web
-              platform that records the performance. Our system completed the task board in 28.2 sec in the lab (37.2
-              sec on-site), nearly tripling the efficiency over the averaged best time of 83.5 sec by previous teams and
-              bringing performance closer to a human baseline of 16.3 sec. By implementing subtasks as reusable code
-              blocks, we facilitated the transfer of these skills to a distinct scenario, successfully removing a
-              battery from a smoke detector with minimal reconfiguration.
-            </p>
-            <p>
-              We also provide suggestions for future research and industrial practice on robotic versatility in
-              manipulation automation through globalized competitions, interdisciplinary efforts, standardization
-              initiatives, and iterative testing in the real world to ensure that it is measured in a meaningful,
-              actionable way.
+              Robotic automation in high-mix, low-volume settings often relies on structured workcells where fixtures, workpieces, and procedures are well defined, but tasks must be reconfigured quickly across variants. This paper presents the Design and Learning Research Group's solution to the <a href="https://sites.google.com/view/eurobin-msvc">euROBIN Manipulation Skill Versatility Challenge (MSVC)</a> at IROS 2024, in which a standardized electronic task board is operated through a fixed sequence of subtasks. We deliberately adopt a simple, industry-style implementation: each subtask is taught by recording an open-loop Tool Center Point (TCP) and gripper trajectory in the task-board frame, a wrist-mounted depth camera is used once per run to localize the board and a few key features, and a web dashboard exposes the resulting motion primitives as reusable code blocks that can be reordered and reparameterized. With this pipeline, our system completes the benchmark in 28.2\,s in the lab (37.2\,s on-site), compared to a human baseline of 16.3\,s and an average of 83.5\,s for previous teams, closing a large part of the performance gap without advanced learning or feedback control. We further demonstrate limited skill transfer by retargeting the same subtask library to a smoke-detector battery replacement scenario required by the competition. Finally, we release our implementation as open source and discuss how competition design and benchmark structure influence the balance between simple engineered solutions and richer sensing and learning.
             </p>
           </div>
         </div>
@@ -238,11 +215,7 @@
           <h2 class="title is-3">Robot System Design</h2>
           <div class="content has-text-justified">
             <p>
-              The robot system developed by DLRG for the competition includes a robot arm (UR10e, Universal Robots), a
-              camera (D435, Intel RealSense), a gripper (Hand-E, Robotiq), and a pair of 3D-printed fingertips with
-              minor customization for cable handling, all mounted on the open-sourced <a
-                href="https://doi.org/10.1109/AIM43001.2020.9159011">DeepClaw</a> station previously developed by the
-              team for a reliable and reconfigurable implementation.
+              The robot system developed by DLRG for the competition includes a robot arm (UR10e, Universal Robots), a camera (D435, Intel RealSense), a gripper (Hand-E, Robotiq), and a pair of 3D-printed fingertips with minor customization for cable handling, all mounted on the open-sourced <a href="https://doi.org/10.1109/AIM43001.2020.9159011">DeepClaw</a> station previously developed by the team for a reliable and reconfigurable implementation.
             </p>
           </div>
           <div class="columns is-centered">
@@ -266,8 +239,7 @@
                 <img src="./images/hardware/ur10e.png" alt="UR10e" width="60%" />
               </td>
               <td style="vertical-align: middle">
-                The UR10e cobot is mounted on the DeepClaw station and controlled through the real-time data exchange
-                (RTDE) interface by the laptop.
+                The UR10e cobot is mounted on the DeepClaw station and controlled through the real-time data exchange (RTDE) interface by the laptop.
               </td>
             </tr>
             <tr>
@@ -280,8 +252,7 @@
                 <img src="./images/hardware/hand-e.png" alt="Hand-E" width="40%" />
               </td>
               <td style="vertical-align: middle">
-                The Hand-E gripper is mounted on the tool flange of the UR10e cobot and controlled via the Modbus RTU
-                RS485 protocol.
+                The Hand-E gripper is mounted on the tool flange of the UR10e cobot and controlled via the Modbus RTU RS485 protocol.
               </td>
             </tr>
             <tr>
@@ -294,9 +265,7 @@
                 <img src="./images/hardware/fingertip.png" alt="3D-printed fingertips" width="70%" />
               </td>
               <td style="vertical-align: middle">
-                The fingertips are re-designed based on the original fingertips of the Robotiq Hand-E gripper to adapt
-                to the competition tasks by adding grooves. They are fabricated using nylon (PA12, HP) through multi-jet
-                fusion (MJF)
+                The fingertips are re-designed based on the original fingertips of the Robotiq Hand-E gripper to adapt to the competition tasks by adding grooves. They are fabricated using nylon (PA12, HP) through multi-jet fusion (MJF)
               </td>
             </tr>
 
@@ -310,9 +279,7 @@
                 <img src="./images/hardware/d435i.png" alt="Realsense D435i" width="80%" />
               </td>
               <td style="vertical-align: middle">
-                The Realsense D435i RGB-D camera is mounted on the UR10e cobot
-                through a bracket and connected to the laptop through a USB
-                cable.
+                The Realsense D435i RGB-D camera is mounted on the UR10e cobot through a bracket and connected to the laptop through a USB cable.
               </td>
             </tr>
 
@@ -326,9 +293,7 @@
                 <img src="./images/hardware/camera_bracket.png" alt="Camera bracket" width="80%" />
               </td>
               <td style="vertical-align: middle">
-                The camera bracket is designed to mount the Realsense D435i
-                RGB-D camera on the UR10e cobot. It is frabricated by CNC with
-                Al6061.
+                The camera bracket is designed to mount the Realsense D435i RGB-D camera on the UR10e cobot. It is frabricated by CNC with Al6061.
               </td>
             </tr>
 
@@ -343,23 +308,14 @@
                 <img src="./images/hardware/fiveray-m20.png" alt="FIVERAY M20" width="70%" />
               </td>
               <td style="vertical-align: middle">
-                The ZHIYUN FIVERAY M20 fill light is mounted on the camera to
-                provide sufficient illumination. It is up to 2010 Lux (0.5m)
-                and able to work for more than 40 minutes without charging.
+                The ZHIYUN FIVERAY M20 fill light is mounted on the camera to provide sufficient illumination. It is up to 2010 Lux (0.5m) and able to work for more than 40 minutes without charging.
               </td>
             </tr>
           </table>
           <div class="content has-text-justified">
             <br />
             <p>
-              We also designed a web-based user interface. On the left side of the interface was a <i>blueprint</i>
-              panel outlining the robot arm's joints and links, the camera, and the gripper with fingertips. The middle
-              includes a <i>3D scene</i> of the robotic arm showing its current state in Cartesian space, a
-              <i>camera</i> view of the live video stream taken from the wrist overlayed with key feature recognition
-              status, and a stack of <i>data curve</i> windows showing the robot's angles and velocities in the joint
-              space. The right is a <i>command</i> panel with code blocks for each subtask skill and a drag-and-drop
-              interface to restructure and refine the overall task flow rapidly. We also added an extra record button to
-              start and stop recording robot data for convenient execution and redeployment.
+              We also designed a web-based user interface. On the left side of the interface was a <i>blueprint</i> panel outlining the robot arm's joints and links, the camera, and the gripper with fingertips. The middle includes a <i>3D scene</i> of the robotic arm showing its current state in Cartesian space, a <i>camera</i> view of the live video stream taken from the wrist overlayed with key feature recognition status, and a stack of <i>data curve</i> windows showing the robot's angles and velocities in the joint space. The right is a <i>command</i> panel with code blocks for each subtask skill and a drag-and-drop interface to restructure and refine the overall task flow rapidly. We also added an extra record button to start and stop recording robot data for convenient execution and redeployment.
             </p>
           </div>
           <div class="columns is-centered">
@@ -380,11 +336,7 @@
           <h3 class="title is-4">SubTask 1: Find Board & Press Button</h3>
           <div class="content has-text-justified">
             <p>
-              The task board is placed at a random position for each trial. Accurately locating the task board is
-              crucial for successful task execution. A fine-tuned <a
-                href="https://github.com/ultralytics/ultralytics">YOLOv8</a> model was used to detect the red button,
-              the blue button and the red test port. As the positional relationship between these task board elements
-              was known and fixed,the global 6D pose of the board was estimated relative to the robot frame.
+              The task board is placed at a random position for each trial. Accurately locating the task board is crucial for successful task execution. A fine-tuned <a href="https://github.com/ultralytics/ultralytics">YOLOv8</a> model was used to detect the red button, the blue button and the red test port. As the positional relationship between these task board elements was known and fixed, the global 6D pose of the board was estimated relative to the robot frame.
             </p>
           </div>
           <div class="columns is-centered">
@@ -409,12 +361,7 @@
           </h3>
           <div class="content has-text-justified">
             <p>
-              After the gripper approached to and securely gripped the slider, the screen was detected using another
-              fine-tuned YOLOv8 model. The red pointer refered to the current position, the yellow one refered to the
-              first target position, and the green one refered to the second target position. The pixels of the pointers
-              displayed on the screen were extracted based on their colors to calculate the pixel distance error, which
-              was then projected to the actual distance relative to the robot frame, guiding the gripper to move the
-              slider to the target.
+              After the gripper approached to and securely gripped the slider, the screen was detected using another fine-tuned YOLOv8 model. The red pointer refered to the current position, the yellow one refered to the first target position, and the green one refered to the second target position. The pixels of the pointers displayed on the screen were extracted based on their colors to calculate the pixel distance error, which was then projected to the actual distance relative to the robot frame, guiding the gripper to move the slider to the target.
             </p>
           </div>
           <div class="columns is-centered">
@@ -430,9 +377,7 @@
           <h3 class="title is-4">SubTask 3: Plug in Probe into Test Port</h3>
           <div class="content has-text-justified">
             <p>
-              The gripper first moved above the probe and downward to grip it. Then the probe was plugged into the red
-              test port. To increase the determinacy of wrapping the cable in subtask 5, the probe was rotated to a
-              certain angle.
+              The gripper first moved above the probe and downward to grip it. Then the probe was plugged into the red test port. To increase the determinacy of wrapping the cable in subtask 5, the probe was rotated to a certain angle.
             </p>
           </div>
           <div class="content">
@@ -441,11 +386,7 @@
           <h3 class="title is-4">SubTask 4: Open Door & Probe Circuit</h3>
           <div class="content has-text-justified">
             <p>
-              To speed up the task execution, the gripper pulled out the probe and pried up the door with the probe tip,
-              instead of gripping the door. Then the probe was inserted into the testing slot and replaced. The
-              challenge of this subtask is that the pose fo the probe might be changed due to the contact with the task
-              board, but the grooves on the fingertips helped the gripper to securely grasp the probe, increasing the
-              accuracy and robustness of the whole process.
+              To speed up the task execution, the gripper pulled out the probe and pried up the door with the probe tip, instead of gripping the door. Then the probe was inserted into the testing slot and replaced. The challenge of this subtask is that the pose of the probe might be changed due to the contact with the task board, but the grooves on the fingertips helped the gripper to securely grasp the probe, increasing the accuracy and robustness of the whole process.
             </p>
           </div>
           <div class="content">
@@ -456,10 +397,7 @@
           <h3 class="title is-4">SubTask 5: Wrap Cable & Replace Probe</h3>
           <div class="content has-text-justified">
             <p>
-              To wrap the cable, we collect the gripper poses from human
-              demonstrated motions, and transform the poses to the task board
-              frame, making it invariant to the absolute position and
-              orientation of the board.
+              To wrap the cable, we collect the gripper poses from human demonstrated motions, and transform the poses to the task board frame, making it invariant to the absolute position and orientation of the board.
             </p>
           </div>
           <div class="content">
@@ -470,8 +408,7 @@
           <h3 class="title is-4">SubTask 6: Press Stop Trial Button</h3>
           <div class="content has-text-justified">
             <p>
-              Pressing the stop trial button (red button) is similar as previous pressing the blue button. After the
-              gripper pressed the button, the task board stopped time recording and the trial was finished.
+              Pressing the stop trial button (red button) is similar as previous pressing the blue button. After the gripper pressed the button, the task board stopped time recording and the trial was finished.
             </p>
           </div>
           <div class="content">
@@ -508,9 +445,7 @@
           <h2 class="title is-3">High-speed Trial</h2>
           <div class="content has-text-justified">
             <p>
-              We performed a successful high-speed trial completed at2.5m/s in 28.2 sec, nearly
-              tripling the efficiency over the averaged best time of 83.5 sec by previous teams and bringing performance
-              closer to a human baseline of 16.3 sec.
+              We performed a successful high-speed trial completed at 2.5 m/s in 28.2 sec, nearly tripling the efficiency over the averaged best time of 83.5 sec by previous teams and bringing performance closer to a human baseline of 16.3 sec.
             </p>
           </div>
           <div class="content">
@@ -530,8 +465,7 @@
           <h2 class="title is-3">On-site Demonstration</h2>
           <div class="content has-text-justified">
             <p>
-              During the on-site competition at IROS 2024 in Abu Dhabi, our system completed the task board in 37.2 sec,
-              winning the Fastest Automated Task Board Solution Award.
+              During the on-site competition at IROS 2024 in Abu Dhabi, our system completed the task board in 37.2 sec, winning the Fastest Automated Task Board Solution Award.
             </p>
           </div>
           <div class="content">
@@ -551,10 +485,7 @@
           <h2 class="title is-3">Skill Transferability</h2>
           <div class="content has-text-justified">
             <p>
-              The implemented task board skills, such as grasping, dragging, inserting, and pressing, readily transfer
-              to broader applications, such as replacing a smoke detector's battery, which is part of the competition
-              requirement. We decomposed this new scenario into five subtasks directly mapped from previous skills with
-              adjusted TCP trajectories and gripper angles.
+              The implemented task board skills, such as grasping, dragging, inserting, and pressing, readily transfer to broader applications, such as replacing a smoke detector's battery, which is part of the competition requirement. We decomposed this new scenario into five subtasks directly mapped from previous skills with adjusted TCP trajectories and gripper angles.
             </p>
           </div>
           <div class="content">
@@ -574,10 +505,7 @@
           <h2 class="title is-3">Discussion</h2>
           <div class="content has-text-justified">
             <p>
-              We compared the performance of our system with human and seven other teams (five best teams in
-              2023, and two teams in 2024). The result indicates that our system had a significant
-              advantage in executing speed compared to other teams in all subtasks, especially ST1, ST4, and ST5, which
-              are close to the human level.
+              We compared the performance of our system with human and seven other teams (five best teams in 2023, and two teams in 2024). The result indicates that our system had a significant advantage in executing speed compared to other teams in all subtasks, especially ST1, ST4, and ST5, which are close to the human level.
             </p>
           </div>
           <div class="columns is-centered">
@@ -590,18 +518,7 @@
           </div>
           <div class="content has-text-justified">
             <p>
-              While preparing for the competition, despite the availability of more advanced tools such as <a
-                href="https://robot-spns.github.io/">soft robotic fingers</a> with omni-directional adaption and
-              state-of-the-art tactile sensing, the team still chose a more structured and industrial solution where the
-              efficiency of task completion is more emphasized over intelligence integration or exploration. The
-              outcomes of such competitions seem to reveal a subtle trend: as tasks become more structured and
-              performance-oriented, there is a tendency for solutions to converge on efficient but relatively inflexible
-              methods. Similar observations can be found in global competitions like the <a
-                href="https://doi.org/10.1109/TASE.2016.2600527">Amazon Picking Challenge</a>. To counter this trend,
-              future competitions or industrial testbeds should introduce greater complexity and variability through
-              diverse objects, dynamic environments, and evolving subtasks to encourage the use of advanced perception,
-              learning algorithms, and adaptive end-effectors. Such challenges will drive the development of intuitive
-              interfaces and autonomous reconfiguration, bridging the gap between human and robot adaptability.
+              The competition's design also shapes the kinds of solutions favored. While preparing for the competition, despite the availability of more advanced tools such as soft robotic fingers with omni-directional adaptation and state-of-the-art tactile sensing, we still chose a more structured and industrial solution that emphasizes task completion efficiency over intelligence integration or exploration. As tasks become more constrained and scoring emphasizes execution time, there is a natural tendency for teams to converge toward efficient but relatively inflexible methods, as previously observed in competitions such as the Amazon Picking Challenge. To encourage advances in perception, learning, and adaptive manipulation, future competitions and testbeds could introduce more diversity in objects, dynamic changes in the environment, or evolving subtask sequences. Our implementation can then serve as a strong baseline for these extended scenarios, against which richer sensing and learning methods can be evaluated.
             </p>
           </div>
         </div>
@@ -616,57 +533,43 @@
         <div class="publication-authors is-flex justify-content is-justify-content-space-around is-hidden-mobile">
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-112x112">
-              <a href="https://hanxudong.cc">
-                <img class="is-rounded" src="./images/team/xudong.jpg" alt="Xudong Han">
-              </a>
+              <img class="is-rounded" src="./images/team/xudong.jpg" alt="Xudong Han">
             </figure>
             <a href="https://hanxudong.cc">Xudong Han</a><sup>1</sup>
           </div>
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-112x112">
-              <a href="https://github.com/AlanSunHR">
-                <img class="is-rounded" src="./images/team/haoran.jpg" alt="Haoran Sun">
-              </a>
+              <img class="is-rounded" src="./images/team/haoran.jpg" alt="Haoran Sun">
             </figure>
             <a href="https://github.com/AlanSunHR">Haoran Sun</a><sup>1, 2</sup>
           </div>
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-112x112">
-              <a href="https://gabriel-ning.github.io">
-                <img class="is-rounded" src="./images/team/ning.jpg" alt="Ning Guo">
-              </a>
+              <img class="is-rounded" src="./images/team/ning.jpg" alt="Ning Guo">
             </figure>
             <a href="https://gabriel-ning.github.io">Ning Guo</a><sup>1</sup>
           </div>
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-112x112">
-              <a href="https://geshengpsn.github.io">
-                <img class="is-rounded" src="./images/team/sheng.jpg" alt="Sheng Ge">
-              </a>
+              <img class="is-rounded" src="./images/team/sheng.jpg" alt="Sheng Ge">
             </figure>
             <a href="https://geshengpsn.github.io">Sheng Ge</a><sup>1</sup>
           </div>
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-112x112">
-              <a href="https://sites.google.com/site/panjia">
-                <img class="is-rounded" src="./images/team/jia.jpg" alt="Jia Pan">
-              </a>
+              <img class="is-rounded" src="./images/team/jia.jpg" alt="Jia Pan">
             </figure>
-            <a href="https://sites.google.com/site/panjia">Jia Pan</a><sup>2</sup>
+            <a href="https://www.cs.hku.hk/people/academic-staff/jpan">Jia Pan</a><sup>2</sup>
           </div>
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-112x112">
-              <a href="https://maindl.ancorasir.com">
-                <img class="is-rounded" src="./images/team/fang.jpg" alt="Fang Wan">
-              </a>
+              <img class="is-rounded" src="./images/team/fang.jpg" alt="Fang Wan">
             </figure>
             <a href="https://maindl.ancorasir.com">Fang Wan</a><sup>1, </sup>*
           </div>
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-112x112">
-              <a href="https://bionicdl.ancorasir.com">
-                <img class="is-rounded" src="./images/team/chaoyang.jpg" alt="Chaoyang Song">
-              </a>
+              <img class="is-rounded" src="./images/team/chaoyang.jpg" alt="Chaoyang Song">
             </figure>
             <a href="https://bionicdl.ancorasir.com">Chaoyang Song</a><sup>3, </sup>*
           </div>
@@ -675,57 +578,43 @@
         <div class="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-space-around is-hidden-tablet">
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-96x96">
-              <a href="https://hanxudong.cc">
-                <img class="is-rounded" src="./images/team/xudong.jpg" alt="Xudong Han">
-              </a>
+              <img class="is-rounded" src="./images/team/xudong.jpg" alt="Xudong Han">
             </figure>
             <a href="https://hanxudong.cc">Xudong Han</a><sup>1</sup>
           </div>
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-96x96">
-              <a href="https://github.com/AlanSunHR">
-                <img class="is-rounded" src="./images/team/haoran.jpg" alt="Haoran Sun">
-              </a>
+              <img class="is-rounded" src="./images/team/haoran.jpg" alt="Haoran Sun">
             </figure>
             <a href="https://github.com/AlanSunHR">Haoran Sun</a><sup>1, 2</sup>
           </div>
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-96x96">
-              <a href="https://gabriel-ning.github.io">
-                <img class="is-rounded" src="./images/team/ning.jpg" alt="Ning Guo">
-              </a>
+              <img class="is-rounded" src="./images/team/ning.jpg" alt="Ning Guo">
             </figure>
             <a href="https://gabriel-ning.github.io">Ning Guo</a><sup>1</sup>
           </div>
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-96x96">
-              <a href="https://geshengpsn.github.io">
-                <img class="is-rounded" src="./images/team/sheng.jpg" alt="Sheng Ge">
-              </a>
+              <img class="is-rounded" src="./images/team/sheng.jpg" alt="Sheng Ge">
             </figure>
             <a href="https://geshengpsn.github.io">Sheng Ge</a><sup>1</sup>
           </div>
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-96x96">
-              <a href="https://sites.google.com/site/panjia">
-                <img class="is-rounded" src="./images/team/jia.jpg" alt="Jia Pan">
-              </a>
+              <img class="is-rounded" src="./images/team/jia.jpg" alt="Jia Pan">
             </figure>
-            <a href="https://sites.google.com/site/panjia">Jia Pan</a><sup>2</sup>
+            <a href="https://www.cs.hku.hk/people/academic-staff/jpan">Jia Pan</a><sup>2</sup>
           </div>
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-96x96">
-              <a href="https://maindl.ancorasir.com">
-                <img class="is-rounded" src="./images/team/fang.jpg" alt="Fang Wan">
-              </a>
+              <img class="is-rounded" src="./images/team/fang.jpg" alt="Fang Wan">
             </figure>
             <a href="https://maindl.ancorasir.com">Fang Wan</a><sup>1,</sup>*
           </div>
           <div class="author-block has-text-centered has-addons-centered">
             <figure class="image is-96x96">
-              <a href="https://bionicdl.ancorasir.com">
-                <img class="is-rounded" src="./images/team/chaoyang.jpg" alt="Chaoyang Song">
-              </a>
+              <img class="is-rounded" src="./images/team/chaoyang.jpg" alt="Chaoyang Song">
             </figure>
             <a href="https://bionicdl.ancorasir.com">Chaoyang Song</a><sup>3,</sup>*
           </div>
@@ -737,6 +626,26 @@
           <span class="author-block">*Corresponding Author</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre>
+        <code>
+@article{han2025lessons,
+    author={Han, Xudong and Sun, Haoran and Guo, Ning and Ge, Sheng and Pan, Jia and Wan, Fang and Song, Chaoyang},
+    journal={IEEE Robotics and Automation Practice}, 
+    title={Lessons Learned from the euROBIN Manipulation Skill Versatility Challenge at IROS 2024}, 
+    year={2025},
+    volume={},
+    number={},
+    pages={1-5},
+    doi={10.1109/RAP.2025.3648290}
+}
+        </code>
+      </pre>
     </div>
   </section>
 
